@@ -35,7 +35,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* subtle elevation */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* small elevation */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -780,20 +780,20 @@ body {
   }
   
   .parallax-about {
-    background-image: url('Images/Logo.png'); /* Your background image */
+    background-image: url('Images/Logo.png');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain; /* Make the image fit within the section */
+    background-size: contain; 
     padding: 100px 300px;
     position: relative;
     color: white;
-    background-size: 50%; /* Makes the image 50% of the section's size */
+    background-size: 50%; /
 
   }
   
   .parallax-overlay {
-    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
+    background-color: rgba(0, 0, 0, 0.6); 
     padding: 60px 40px;
     max-width: 900px;
     margin: auto;
