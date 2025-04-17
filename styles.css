@@ -780,18 +780,20 @@ body {
   }
   
   .parallax-about {
-    background-image: url('Logo.png'); /* Replace with your image */
+    background-image: url('Images/Logo.png'); /* Your background image */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
-    padding: 100px 20px;
+    background-size: contain; /* Make the image fit within the section */
+    padding: 100px 300px;
     position: relative;
     color: white;
+    background-size: 50%; /* Makes the image 50% of the section's size */
+
   }
   
   .parallax-overlay {
-    background-color: rgba(0, 0, 0, 0.6); /* dark overlay for readability */
+    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
     padding: 60px 40px;
     max-width: 900px;
     margin: auto;
@@ -813,16 +815,17 @@ body {
     font-size: 28px;
     margin-top: 30px;
   }
-
+  
   .about-image img {
     width: 100%;
     max-width: 300px;
     height: auto;
-    object-fit: contain;
+    object-fit: cover;
     box-shadow: none;
     display: block;
     border-radius: 0px;
   }
+  
 
 
 /* Mobile & Tablet Styles */
