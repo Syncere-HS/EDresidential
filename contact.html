@@ -381,7 +381,7 @@
       submitBtn.innerHTML = 'Sending...';
       
       // Send form data using EmailJS
-      emailjs.sendForm('YOUR_EMAILJS_SERVICE_ID', 'YOUR_EMAILJS_TEMPLATE_ID', this)
+      emailjs.sendForm('service_re2xr9bd', 'template_zrh318s', this)
         .then(() => {
           // Show success message
           document.getElementById('form-success').style.display = 'block';
@@ -395,9 +395,10 @@
           
           // Reset button after 3 seconds
           setTimeout(() => {
-            submitBtn.innerHTML = 'Submit Message';
-            submitBtn.disabled = false;
-          }, 3000);
+          document.getElementById('form-success').style.display = 'none'; // Add this
+          submitBtn.innerHTML = 'Submit Message';
+          submitBtn.disabled = false;
+        }, 3000);
         }, (error) => {
           alert('Oops! There was a problem sending your message. Please try again or call us directly.');
           submitBtn.innerHTML = 'Submit Message';
@@ -407,7 +408,7 @@
     
     // Initialize EmailJS with your Public Key
     (function() {
-      emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
+      emailjs.init('KLsuzRmQ4mYRFgUri');
     })();
     
     // Scroll animations
@@ -423,6 +424,8 @@
         }
       });
     });
+
+    
   </script>
   
   <!-- EmailJS SDK -->
