@@ -20,7 +20,7 @@
       to { opacity: 1; }
     }
     
-    /* Contact Hero - No animations */
+    /* Contact Hero */
     .contact-hero {
       background: 
         linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
@@ -46,7 +46,7 @@
       line-height: 1.6;
     }
     
-    /* Contact Form Section - No animations */
+    /* Contact Form Section */
     .contact-section {
       padding: 60px 20px;
       background-color: #f9f9f9;
@@ -120,7 +120,7 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
     
-    /* Contact Info - No animations */
+    /* Contact Info */
     .contact-info {
       padding: 60px 20px;
       background-color: #A3CD4A;
@@ -269,11 +269,11 @@
               <label for="service">Service Needed</label>
               <select id="service" name="service" class="form-control">
                 <option value="">Select a service</option>
-                <option value="crawlspace">Crawl Space Encapsulation</option>
-                <option value="insulation">Attic Insulation</option>
-                <option value="waterproofing">Waterproofing</option>
-                <option value="duct-cleaning">Air Duct Cleaning</option>
-                <option value="other">Other</option>
+                <option value="Crawlspace Encapsulation">Crawl Space Encapsulation</option>
+                <option value="Attic Insulation">Attic Insulation</option>
+                <option value="Waterproofing">Waterproofing</option>
+                <option value="Duct-Cleaning">Air Duct Cleaning</option>
+                <option value="Other">Other</option>
               </select>
             </div>
             
@@ -320,66 +320,45 @@
     </section>
   </main>
 
+  <!-- EmailJS SDK - MUST come first -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  
   <script>
-    // Mobile menu toggle
-    function toggleMenu() {
-      const navLinks = document.getElementById('nav-links');
-      navLinks.classList.toggle('active');
-      
-      // Close menu when clicking a link
-      document.querySelectorAll('nav ul li a').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('active');
-        });
-      });
-    }
+    // Initialize EmailJS FIRST
+    emailjs.init('KLsuzRmQ4mYRFgUri');
     
-    // Form submission with EmailJS
+    // Form submission handler
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      const form = this;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const successMsg = document.getElementById('form-success');
       
-      // Show loading state
-      const submitBtn = this.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
+      // Set loading state
       submitBtn.disabled = true;
-      submitBtn.innerHTML = 'Sending...';
+      submitBtn.textContent = 'Sending...';
       
-      // Send form data using EmailJS
-      emailjs.sendForm('service_re2xr9bd', 'template_zrh318s', this)
+      // Send with DEBUGGING
+      console.log("Attempting to send to service_re2xr9b...");
+      emailjs.sendForm('service_re2xr9b', 'template_zrh318s', form)
         .then(() => {
-          // Show success message
-          const successMsg = document.getElementById('form-success');
+          console.log("Success!");
           successMsg.style.display = 'block';
-          this.reset();
-          submitBtn.innerHTML = 'Message Sent!';
-          
-          // Scroll to success message
-          successMsg.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-          });
-          
-          // Reset form after 5 seconds
+          form.reset();
+          submitBtn.textContent = 'Sent!';
           setTimeout(() => {
             successMsg.style.display = 'none';
-            submitBtn.innerHTML = originalText;
+            submitBtn.textContent = 'Submit Message';
             submitBtn.disabled = false;
           }, 5000);
-        }, (error) => {
-          alert('Oops! There was a problem sending your message. Please try again or call us directly.');
-          submitBtn.innerHTML = originalText;
+        })
+        .catch(error => {
+          console.error("FAILED:", error);
+          alert(`Error: ${error.text || 'See console (F12)'}`);
+          submitBtn.textContent = 'Try Again';
           submitBtn.disabled = false;
-          console.error('EmailJS Error:', error);
         });
     });
-    
-    // Initialize EmailJS with your Public Key
-    (function() {
-      emailjs.init('KLsuzRmQ4mYRFgUri');
-    })();
   </script>
-  
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 </body>
 </html>
