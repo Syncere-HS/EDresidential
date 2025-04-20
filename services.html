@@ -1,92 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Services | ED Residential</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="script.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ===== Mobile-First Services Page ===== */
+    .services-page {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Services Hero */
+    .services-hero {
+      background: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('Images/2024-10-31.jpg') center/cover no-repeat;
+      min-height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 30px 20px;
+    }
+    
+    .services-hero-content {
+      max-width: 800px;
+    }
+    
+    .services-hero h1 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+    
+    .services-hero p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    /* Services Grid */
+    .services-main {
+      padding: 40px 15px;
+      background-color: #f9f9f9;
+    }
+    
+    .services-main h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: #222;
+    }
+    
+    .services-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .service-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .service-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .service-card-content {
+      padding: 20px;
+    }
+    
+    .service-card h3 {
+      font-size: 1.3rem;
+      color: #222;
+      margin-bottom: 12px;
+    }
+    
+    .service-card p {
+      color: #555;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+    
+    /* Final CTA */
+    .services-cta {
+      padding: 40px 20px;
+      background-color: #A3CD4A;
+      color: white;
+      text-align: center;
+    }
+    
+    .services-cta h2 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+    }
+    
+    .services-cta p {
+      max-width: 400px;
+      margin: 0 auto 20px;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    
+    .services-cta .cta {
+      display: inline-block;
+      background: white;
+      color: #A3CD4A;
+      padding: 12px 25px;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid white;
+      font-size: 1rem;
+    }
+    
+    /* Tablet Styles */
+    @media (min-width: 600px) {
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 1000px;
+        gap: 25px;
+      }
+      
+      .services-hero {
+        min-height: 50vh;
+      }
+      
+      .services-hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+    
+    /* Desktop Styles */
+    @media (min-width: 900px) {
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .services-main {
+        padding: 60px 20px;
+      }
+      
+      .services-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .services-main h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation Bar -->
   <nav>
-    <a href=""><img src="Images/Logo.png" alt="Company logo"></a>
+    <a href="index.html"><img src="Images/Logo.png" alt="ED Residential Logo"></a>
     <ul id="nav-links">
-        <li><a  href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="reviews.html">Reviews</a></li>
-        <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" aria-current="page">Services</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <div class="nav-phone">
-      <p class="cta-text">Get Your Free Consultation Today</p>
-      <a href="tel:4102007162" class="cta">410-200-7162</a>
-    </div>
+    <div class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Expert Services</h1>
-      <p>At ED Residential, we specialize in making your home more comfortable and efficient. With our expertise, you can rest easy knowing your home is in good hands.</p>
-    </div>
-  </section>
+  <main class="services-page">
+    <!-- Hero Section -->
+    <section class="services-hero">
+      <div class="services-hero-content">
+        <h1>Expert Services</h1>
+        <p>At ED Residential, we specialize in making your home more comfortable and efficient. With our expertise, you can rest easy knowing your home is in good hands.</p>
+      </div>
+    </section>
 
-  <!-- Services Section -->
-  <section class="services">
-    <h2>What We Offer</h2>
-    <div class="service-cards">
+    <!-- Services Grid -->
+    <section class="services-main">
+      <h2>What We Offer</h2>
+      <div class="services-grid">
         <div class="service-card">
-            <img src="Images/atticInsulation.jpg" alt="Attic Insulation">
+          <img src="Images/atticInsulation.jpg" alt="Attic Insulation">
+          <div class="service-card-content">
             <h3>Attic Insulation</h3>
             <p>Boost your home's energy efficiency and comfort with high-quality attic insulation to reduce heating and cooling costs.</p>
+          </div>
         </div>
+        
         <div class="service-card">
-            <img src="Images/gutterreplacement.jpg" alt="House with amazing looking gutters">
+          <img src="Images/gutterreplacement.jpg" alt="Gutter Replacement">
+          <div class="service-card-content">
             <h3>Gutter Replacement</h3>
-            <p>Prevent water damage and foundation issues with professionally installed gutters. Our durable, high-performance gutter systems are designed to direct rainwater away from your home, protecting its structure and landscaping.</p>
-
+            <p>Prevent water damage and foundation issues with professionally installed gutters designed to direct rainwater away from your home.</p>
+          </div>
         </div>
+        
         <div class="service-card">
-            <img src="Images/Encapsulation2.jpg" alt="Crawl Space Encapsulation">
+          <img src="Images/Encapsulation2.jpg" alt="Crawl Space Encapsulation">
+          <div class="service-card-content">
             <h3>Crawl Space Encapsulation</h3>
             <p>Protect your home from moisture and mold by sealing your crawl space, improving both air quality and energy efficiency.</p>
+          </div>
         </div>
+        
         <div class="service-card">
-            <img src="Images/cleaning.png" alt="Air Duct Cleaning">
+          <img src="Images/cleaning.png" alt="Air Duct Cleaning">
+          <div class="service-card-content">
             <h3>Air Duct Cleaning</h3>
             <p>Improve indoor air quality and HVAC efficiency by having your air ducts professionally cleaned.</p>
+          </div>
         </div>
+        
         <div class="service-card">
-            <img src="Images/drain.jpg" alt="Waterproofing">
+          <img src="Images/drain.jpg" alt="Waterproofing">
+          <div class="service-card-content">
             <h3>Waterproofing</h3>
             <p>Keep your basement and crawl space dry with expert waterproofing solutions to prevent water damage.</p>
+          </div>
         </div>
+        
         <div class="service-card">
-            <img src="Images/access.jpg" alt="Access Door">
+          <img src="Images/access.jpg" alt="Custom Access Doors">
+          <div class="service-card-content">
             <h3>Custom Access Doors</h3>
-            <p>Tailored access doors designed for easy maintenance and efficient moisture control. Enhance the longevity and accessibility of your crawlspaces and basements.</p>
+            <p>Tailored access doors designed for easy maintenance and efficient moisture control in crawlspaces and basements.</p>
+          </div>
         </div>
+        
         <div class="service-card">
-            <img src="Images/dehumidifer.JPG" alt="Dehumidifier">
+          <img src="Images/dehumidifer.JPG" alt="Dehumidifier">
+          <div class="service-card-content">
             <h3>Dehumidification</h3>
-            <p>Effective moisture control for a healthier environment.</p>
+            <p>Effective moisture control solutions for a healthier home environment.</p>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-    
-    
-    
-  </section>
+    <!-- Final CTA -->
+    <section class="services-cta">
+      <h2>Ready to Improve Your Home?</h2>
+      <p>Contact us today for a free consultation. We'll help you find the right solutions for your home's needs.</p>
+      <a href="tel:4102007162" class="cta">410-200-7162</a>
+    </section>
+  </main>
 
-  <!-- Final CTA Section -->
-  <section class="final-cta">
-    <h2>Ready to Improve Your Home?</h2>
-    <p>Contact us today for a free consultation. We’ll help you find the right solutions for your home’s needs.</p>
-    <a href="tel:4102007162" class="cta">410-200-7162</a>
-  </section>
-
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.classList.toggle('active');
+    }
+  </script>
 </body>
 </html>

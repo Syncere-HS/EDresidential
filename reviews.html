@@ -1,223 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reviews | E.D. Residential</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* General Body and Font Styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        .menu-icon {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .nav-phone {
-            text-align: center;
-        }
-        .cta-text {
-            color: #fff;
-            font-size: 14px;
-        }
-        .cta {
-            color: #8FB83A;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        /* Reviews Section Styles */
-        .reviews {
-            background-color: white;
-            padding: 40px;
-            text-align: center;
-        }
-        .reviews h1 {
-            font-size: 36px;
-            color: #333;
-            margin-bottom: 30px;
-        }
-        .review-card {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .review-card p {
-            font-size: 18px;
-            color: #555;
-            line-height: 1.5;
-            margin-bottom: 10px;
-        }
-        .review-card span {
-            font-size: 16px;
-            color: #777;
-            font-style: italic;
-        }
-        .review-card h3 {
-            font-size: 20px;
-            color: #333;
-            margin-top: 10px;
-        }
-        .review-card img {
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            margin-bottom: 10px;
-        }
-
-        .stars {
-            color: #FFD700;
-            font-size: 18px;
-        }
-
-        /* Call to Action Section Styles */
-        .cta {
-            background-color: #8FB83A;
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        .cta h2 {
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-        .cta p {
-            font-size: 18px;
-            margin-bottom: 25px;
-        }
-        .cta-button {
-            background-color: #6E8B2F;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .cta-button:hover {
-            background-color: #4e703b;
-        }
-
-        /* Responsive Design for Smaller Screens */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            #nav-links {
-                flex-direction: column;
-                margin-top: 20px;
-            }
-            .menu-icon {
-                display: block;
-            }
-            .reviews {
-                padding: 20px;
-            }
-            .cta-button {
-                font-size: 16px;
-                padding: 12px 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews | ED Residential</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Reviews Page Specific Styles */
+    .reviews-page {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Reviews Hero */
+    .reviews-hero {
+      background: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('Images/Logo.png') center/cover no-repeat;
+      min-height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 30px 20px;
+    }
+    
+    .reviews-hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    
+    /* Reviews Content */
+    .reviews-content {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .reviews-content h2 {
+      font-size: 2rem;
+      color: #222;
+      margin-bottom: 30px;
+    }
+    
+    /* Navigation Fix */
+    nav {
+      position: relative; /* Needed for dropdown positioning */
+    }
+    
+    nav ul {
+      transition: all 0.3s ease;
+    }
+    
+    @media (max-width: 768px) {
+      nav ul {
+        position: absolute;
+        top: 100%; /* Positions dropdown below nav */
+        right: 0;
+        width: 200px;
+        background: white;
+        flex-direction: column;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        display: none;
+      }
+      
+      nav ul.active {
+        display: flex;
+      }
+      
+      .menu-icon {
+        display: block;
+        cursor: pointer;
+      }
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html"><img src="Images/Logo.png" alt="Company logo"></a>
-        <ul id="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="reviews.html" class="active">Reviews</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        <div class="nav-phone">
-            <p class="cta-text">Get Your Free Consultation Today</p>
-            <a href="tel:4102007162" class="cta">410-200-7162</a>
-        </div>
-    </nav>
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html"><img src="Images/Logo.png" alt="ED Residential Logo"></a>
+    <ul id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="reviews.html" aria-current="page">Reviews</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</div>
+  </nav>
 
-    <section class="reviews">
-        <section class="parallax-about">
-            <div class="parallax-overlay">
-              <div class="parallax-content">
-                <h2>See what our customers say...</h2>
-              </div>
-            </div>
-          </section>
-
-        <div class="review-card">
-            <h3>Alan Iwanicki</h3>
-            <p>"This company is the top of the business in terms of quality, responsible, professional and all around great work. We had crawlspace encapsulation performed and some floor leveling issues which was corrected while all work was done. There was constant communication concerning any issues with the scope of work. Their staff is professional in the work they do, and you will never think they were there. I would recommend their services to anyone. Thanks ED Residential for a great job."</p>
-            <div class="stars">★★★★★</div>
-        </div>
-
-        <div class="review-card">
-            <h3>Kirk Thomas</h3>
-            <p>"Edwin and his crew were fabulous! We have never seen a group of guys work so hard. They took care of the water issues in our crawl space and followed up with us to be sure everything was working well. We will use E.D. Residential for any job we have in the future. We highly recommend them to anyone looking for quality, affordable, professional, and friendly workmanship. Thanks again Edwin!!"</p>
-            <div class="stars">★★★★★</div>
-        </div>
-
-        <div class="review-card">
-            <h3>Amanda Matthews</h3>
-            <p>"In a few words to describe E.D. Residential and the work they did for us, honest, reliable, excellent work ethic, attention paid to detail, professional in all ways. Thank you Edwin Gomez for a job well done."</p>
-            <div class="stars">★★★★★</div>
-        </div>
-
-        <div class="review-card">
-            <h3>James Cibulka</h3>
-            <p>"The services of E.D. Residential were provided as promised, promptly, courteously, and at a reasonable cost. Their improvements have resolved the humidity problems in our basement and house. I would highly recommend them!"</p>
-            <div class="stars">★★★★★</div>
-        </div>
-
-        <div class="review-card">
-            <h3>Krishan Patel</h3>
-            <p>"E D Residential, the company owned by Edwin, delivered timely, affordable, and masterful craftsmanship. We were very impressed with Edwin’s professionalism and courteous demeanor during the encapsulation of our crawl space. He dealt with any small or large challenge during the project with calmness and consulted with us at every step. We would eagerly recommend E D Residential to anyone needing the service."</p>
-            <div class="stars">★★★★★</div>
-        </div>
-
-        <div class="review-card">
-            <h3>David Lafollette</h3>
-            <p>"ED Residential delivered quality, timely, and affordable work. It has been an absolute pleasure to work with Edwin the owner of ED residential. Our house was infested with mold, and Edwin and his crew squeezed us into their busy schedule to ensure we could move back into our home as soon as possible. 10/10 recommend!!"</p>
-            <div class="stars">★★★★★</div>
-        </div>
-
-        <div class="review-card">
-            <h3>Scott</h3>
-            <p>"Outstanding! I really can't say enough about Edwin and his crew, a fair price, cheaper than other estimates, and started almost immediately. Completely restored our crawl space, removed some mold, the wood looks brand new (our crawl space flooded this winter), replaced all the insulation, plastic, added a sump pump, dehumidifier, and a condensation pump. Sealed everything. They were on time and worked a full day. I cannot recommend any company higher than E.D Residential. Thank you Edwin and crew."</p>
-            <div class="stars">★★★★★</div>
-        </div>
-
-        <div class="review-card">
-            <h3>Pam Woody</h3>
-            <p>"They replaced my gutters - were very professional and very good.  I will call them again for any applicable services in the future."</p>
-            <div class="stars">★★★★★</div>
-        </div>
-
-        <div class="review-card">
-            <h3>Carol Nottingham</h3>
-            <p>"Need more stars!!   Excellent in all aspects.  Edwin did all contacts for work outside his scope.   Would highly recommend him & his crew!!"</p>
-            <div class="stars">★★★★★</div>
-        </div>
+  <main class="reviews-page">
+    <!-- Hero Section -->
+    <section class="reviews-hero">
+      <div class="reviews-hero-content">
+        <h1>E.D. RESIDENTIAL LLC</h1>
+        <p>Hear what our customers have to say</p>
+      </div>
     </section>
 
-    <section class="final-cta">
-        <h2>Ready to Improve Your Home?</h2>
-        <p>Contact us today for a free consultation. We’ll help you find the right solutions for your home’s needs.</p>
-        <a href="tel:4102007162" class="cta">410-200-7162</a>
-      </section>
+    <!-- Reviews Content -->
+    <section class="reviews-content">
+      <h2>Customer Reviews</h2>
+      <!-- Reviews will go here -->
+      <div class="reviews-container">
+        <!-- Review cards will be added here -->
+      </div>
+    </section>
+  </main>
 
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.classList.toggle('active');
+      
+      // Close menu when clicking a link
+      document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+        });
+      });
+    }
+  </script>
 </body>
 </html>
