@@ -3,9 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | ED Residential</title>
+  <!-- Primary Meta Tags -->
+  <title>About ED Residential | Trusted Local Home Improvement Experts</title>
+  <meta name="description" content="Learn about our family-owned home improvement company serving local communities with quality craftsmanship and personalized service since our founding.">
+  <meta name="keywords" content="home improvement, residential services, about ED Residential, local contractors, home renovation, trusted home services">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.edresidential.com/about.html">
+  <meta property="og:title" content="About ED Residential | Your Trusted Home Improvement Partner">
+  <meta property="og:description" content="Family-owned home improvement specialists dedicated to quality work and customer satisfaction in your local area.">
+  <meta property="og:image" content="https://www.edresidential.com/Images/Logo.png">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.edresidential.com/about.html">
+  <meta property="twitter:title" content="About ED Residential | Your Trusted Home Improvement Partner">
+  <meta property="twitter:description" content="Family-owned home improvement specialists dedicated to quality work and customer satisfaction in your local area.">
+  <meta property="twitter:image" content="https://www.edresidential.com/Images/Logo.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="Images/favicon.png" type="image/png">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.edresidential.com/about.html">
+  
   <link rel="stylesheet" href="styles.css">
   <style>
+    /* Animation Keyframes */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
     /* ===== Redesigned About Page ===== */
     .about-page {
       display: flex;
@@ -13,7 +54,7 @@
       min-height: 100vh;
     }
     
-    /* Hero Section */
+    /* Hero Section with Animation */
     .about-hero {
       background: 
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
@@ -25,6 +66,7 @@
       text-align: center;
       padding: 40px 20px;
       color: white;
+      animation: fadeIn 0.8s ease-in-out forwards;
     }
     
     .about-content {
@@ -34,6 +76,8 @@
       padding: 40px;
       background-color: rgba(0, 0, 0, 0.6);
       border-radius: 10px;
+      animation: slideUp 0.8s ease-out forwards 0.3s;
+      opacity: 0;
     }
     
     .about-content h2 {
@@ -46,20 +90,26 @@
       font-size: 1.1rem;
       line-height: 1.7;
       margin-bottom: 20px;
+      animation: fadeIn 0.8s ease-in forwards 0.6s;
+      opacity: 0;
     }
     
     .about-content h3 {
       font-size: 1.8rem;
       color: #A3CD4A;
       margin: 30px 0 15px;
+      animation: fadeIn 0.8s ease-in forwards 0.5s;
+      opacity: 0;
     }
     
-    /* CTA Section */
+    /* CTA Section with Animation */
     .about-cta {
       padding: 60px 20px;
       background-color: #A3CD4A;
       color: white;
       text-align: center;
+      animation: fadeIn 0.8s ease-in forwards 0.8s;
+      opacity: 0;
     }
     
     .about-cta h2 {
@@ -89,6 +139,7 @@
     .about-cta .btn:hover {
       background: #f8f8f8;
       transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     
     /* Responsive Design */
@@ -126,7 +177,7 @@
 </head>
 <body>
   <nav>
-    <a href="index.html"><img src="Images/Logo.png" alt="ED Residential Logo"></a>
+    <a href="index.html"><img src="Images/Logo.png" alt="ED Residential Logo - Local Home Improvement Experts" loading="lazy"></a>
     <ul id="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html" aria-current="page">About</a></li>
@@ -134,14 +185,14 @@
       <li><a href="reviews.html">Reviews</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <div class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation">☰</div>
+    <div class="menu-icon" onclick="toggleMenu()" aria-label="Toggle navigation menu">☰</div>
   </nav>
 
-  <main class="about-page">
+  <main class="about-page" itemscope itemtype="https://schema.org/LocalBusiness">
     <section class="about-hero">
       <div class="about-content">
-        <h2>About us</h2>
-        <p>
+        <h2 itemprop="name">About ED Residential</h2>
+        <p itemprop="description">
           At ED Residential, we're more than just a home improvement company. As a locally-owned, 
           fast-growing business, we offer a personalized approach to each and every project. 
           We've eliminated the corporate overhead, which means you're getting the care and 
@@ -154,7 +205,7 @@
         </p>
   
         <h3>Our Mission</h3>
-        <p>
+        <p itemprop="slogan">
           Honesty and reliability are at the heart of everything we do. <br><br>
           From start to finish, we're committed to delivering exceptional results — on time, 
           within budget, with craftsmanship, and complete pricing transparency.
@@ -174,6 +225,15 @@
       const navLinks = document.getElementById('nav-links');
       navLinks.classList.toggle('active');
     }
+    
+    // Preload critical animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const elements = document.querySelectorAll('[style*="animation"], [style*="transition"]');
+      elements.forEach(el => {
+        el.style.animationPlayState = 'running';
+        el.style.transitionProperty = 'all';
+      });
+    });
   </script>
 </body>
 </html>
